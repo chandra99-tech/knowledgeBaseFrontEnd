@@ -31,13 +31,13 @@ src/
 ## 2. AI Usage (Mandatory Section)
 
 ### Tools Used
-- **Antigravity / Gemini**: Used for UI component generation and frontend-to-backend integration logic.
+- **OpenAI**: Used for UI Architecture and frontend-to-backend integration logic.
 
 ### How AI Helped
-- **Code Generation**: Generated initial React page structures and the complex JSX required for the Dashboard and Article creation forms.
-- **UI Ideas**: Suggested the dark-themed, sleek layout and implemented the CSS for the premium card designs and hover animations.
-- **Refactoring**: Optimized React `useEffect` hooks to prevent infinite re-renders when fetching user-specific articles.
-- **API Design**: Scaffolded the Axios service layer to ensure seamless data flow between the React frontend and the Java Spring Boot backend.
+-**Boilerplate Assistance**: Used to generate initial React component shells and basic form structures to accelerate development.
+- **CSS Utility**: Provided specific CSS properties for gradients and glassmorphism effects based on manual design requirements.
+- **Hook Optimization**: Assisted in verifying dependency arrays for `useEffect` hooks to ensure efficient data fetching.
+- **Library Reference**: Provided quick reference for Axios configuration and interceptor setup.
 
 ### Manual Corrections
 - **Prop Key Handling**: Manually added unique key fallbacks (`article.id || index`) to list renderings after identifying "missing key" warnings in the browser console.
