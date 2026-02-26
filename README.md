@@ -1,16 +1,74 @@
-# React + Vite
+# KnowledgeBase Frontend - React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive, and aesthetically premium frontend for the Knowledge Sharing Platform, built with React and Vite.
 
-Currently, two official plugins are available:
+## 1. Approach
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Architecture Overview
+The frontend is built using **React 18** and follows a component-driven architecture:
+- **Pages**: Top-level route components (Dashboard, Home, Login).
+- **Components**: Reusable UI elements (ArticleCard, Navbar).
+- **Services**: API abstraction layer using Axios for backend communication.
+- **State Management**: React Hooks (useState, useEffect) and LocalStorage for persistence.
 
-## React Compiler
+### Folder Structure
+```text
+src/
+├── assets/        # Static images and icons
+├── components/    # Reusable UI building blocks
+├── pages/         # View components (Home, ArticleDetail, etc.)
+├── services/      # API communication (Axios config)
+├── utils/         # Helper functions (JWT decoding)
+├── App.jsx        # Routing and main entry
+└── index.css      # Core Design System (Glassmorphism & Gradients)
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Key Design Decisions
+- **Premium Aesthetics**: Implemented a "wow-factor" UI using dark mode, glassmorphism effects, and CSS gradients to create a premium feel.
+- **Intercepted Auth**: Used Axios interceptors to automatically attach JWT tokens to every request and redirect to `/login` if a 401 Unauthorized response is received.
+- **Fail-Safe UI**: Added robust null-checks in `Home.jsx` and `Dashboard.jsx` to prevent runtime crashes if article content or tags are missing.
 
-## Expanding the ESLint configuration
+## 2. AI Usage (Mandatory Section)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Tools Used
+- **Antigravity / Gemini**: Used for UI component generation and frontend-to-backend integration logic.
+
+### How AI Helped
+- **Code Generation**: Generated initial React page structures and the complex JSX required for the Dashboard and Article creation forms.
+- **UI Ideas**: Suggested the dark-themed, sleek layout and implemented the CSS for the premium card designs and hover animations.
+- **Refactoring**: Optimized React `useEffect` hooks to prevent infinite re-renders when fetching user-specific articles.
+- **API Design**: Scaffolded the Axios service layer to ensure seamless data flow between the React frontend and the Java Spring Boot backend.
+
+### Manual Corrections
+- **Prop Key Handling**: Manually added unique key fallbacks (`article.id || index`) to list renderings after identifying "missing key" warnings in the browser console.
+- **Detail Page Logic**: Manually corrected the author-check logic in `ArticleDetail.jsx` to ensure owner-only actions like Edit/Delete are correctly displayed based on the decoded JWT.
+
+## 3. Setup Instructions
+
+### Prerequisites
+- **Node.js** (v16.x or later)
+- **npm** or **yarn**
+
+### Environment Variables
+The frontend expects the backend to be running on `http://localhost:8080`.
+Configure any overrides in a `.env` file in the `frontend/` directory (optional).
+
+### Installation
+1. Navigate to the directory:
+   ```bash
+   cd frontend
+   ```
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Run in development mode:
+   ```bash
+   npm run dev
+   ```
+   *Application will be available at [http://localhost:5173](http://localhost:5173)*
+
+### Build for Production
+```bash
+npm run build
+```
